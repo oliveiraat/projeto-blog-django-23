@@ -28,8 +28,8 @@ EXPOSE 8000
 # imagem e torná-la mais eficiente.
 RUN python -m venv /venv && \
   /venv/bin/pip install --upgrade pip && \
-  /venv/bin/pip install -r /djangoapp/requirements.txt && \
-  adduser --disabled-password --no-create-home duser && \
+  /venv/bin/pip install -r /djangoapp/requirements.txt  
+RUN adduser --disabled-password --no-create-home duser && \
   mkdir -p /data/web/static && \
   mkdir -p /data/web/media && \
   chown -R duser:duser /venv && \

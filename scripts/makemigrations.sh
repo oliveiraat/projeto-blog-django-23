@@ -1,3 +1,3 @@
 #!/bin/sh
 echo 'Executando makemigrations.sh'
-python manage.py makemigrations --noinput
+sudo python manage.py makemigrations --noinput
