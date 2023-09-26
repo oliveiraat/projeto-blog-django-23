@@ -1,4 +1,6 @@
 #!/bin/sh
 makemigrations.sh
 echo 'Executando migrate.sh'
-sudo python manage.py migrate --noinput
+python manage.py migrate --noinput
+echo "from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.create_superuser('admin', 'admin@example.com', 'irntcmp')" | python manage.py shell
+exec "$@"

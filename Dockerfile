@@ -30,18 +30,17 @@ RUN python -m venv /venv && \
   /venv/bin/pip install --upgrade pip && \
   /venv/bin/pip install -r /djangoapp/requirements.txt  
 RUN adduser --disabled-password --no-create-home duser && \
-  mkdir -p /data/web/static && \
-  mkdir -p /data/web/media && \
-  chown -R duser:duser /venv && \
-  chown -R duser:duser /data/web/static && \
-  chown -R duser:duser /data/web/media && \
-  chmod -R 755 /data/web/static && \
-  chmod -R 755 /data/web/media && \
-  chmod -R +x /scripts
+  mkdir -pv /data/web/static && \
+  mkdir -pv /data/web/media   
+RUN chown -R duser:duser /data/web/static  
+RUN chown -R duser:duser /data/web/media  
+RUN chmod -R 755 /data/web/static  
+RUN chmod -R 755 /data/web/media  
+RUN chmod -R +x /scripts
 
 # Adiciona a pasta scripts e venv/bin 
 # no $PATH do container.
-ENV PATH="/scripts:/venv/bin:$PATH"
+ENV PATH="/scripts:/venv/bin:$PATH" 
 
 # Muda o usuário para duser
 USER duser
